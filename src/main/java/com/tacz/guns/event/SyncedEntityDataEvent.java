@@ -18,6 +18,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,7 +80,7 @@ public final class SyncedEntityDataEvent {
         if (!instance.isDirty()) {
             return;
         }
-        List<Entity> dirtyEntities = instance.getDirtyEntities();
+        List<Entity> dirtyEntities = new ArrayList<>(instance.getDirtyEntities());
         if (dirtyEntities.isEmpty()) {
             instance.setDirty(false);
             return;
